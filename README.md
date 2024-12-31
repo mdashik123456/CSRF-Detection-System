@@ -12,3 +12,9 @@ This project is a CSRF (Cross-Site Request Forgery) Detection System that automa
 
 -> Determines if a site is vulnerable or safe based on CSRF and cookie evaluations.
 
+```
+requests
+beautifulsoup4
+selenium
+webdriver-manager
+```
