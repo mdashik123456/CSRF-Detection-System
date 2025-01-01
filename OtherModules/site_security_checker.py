@@ -16,8 +16,9 @@ class SiteSecurityChecker:
             return "Site is vulnerable: No forms found."
 
         tokens = self.form_extractor.extract_csrf_tokens(forms)
-        if not tokens:
+        if not any(tokens[key] for key in tokens):
             return "Site is vulnerable: No CSRF tokens found in forms."
+        print(tokens)
 
         valid, invalid_form = self.token_validator.are_all_tokens_valid(tokens)
         if not valid:
