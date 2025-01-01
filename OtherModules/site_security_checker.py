@@ -28,9 +28,6 @@ class SiteSecurityChecker:
         new_tokens = self.form_extractor.extract_csrf_tokens(forms)
         
         if self.token_validator.are_tokens_unique(tokens, new_tokens):
-            print(tokens)
-            print()
-            print(new_tokens)
             return "Site is vulnerable: CSRF tokens are reused."
 
         # Check cookie security with Selenium
