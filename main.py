@@ -10,8 +10,8 @@ if __name__ == "__main__":
     if links:
         for link in links:
             print("\n<----------------------New Scan--------------------------->")
+            print(f"Scanning: {link}")
             if isLinkWork.is_link_working(link):
-                print(f"Scanning: {link}")
                 checker = SiteSecurityChecker(link)
                 result = checker.check_site_security()
                 print(result)
