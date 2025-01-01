@@ -13,12 +13,11 @@ class SiteSecurityChecker:
         """Check the security of a site based on CSRF and cookies."""
         forms = self.form_extractor.get_forms(self.url)
         if not forms:
-            return "Site is vulnerable: No forms found."
+            return "No forms found."
 
         tokens = self.form_extractor.extract_csrf_tokens(forms)
         if not any(tokens[key] for key in tokens):
             return "Site is vulnerable: No CSRF tokens found in forms."
-        print(tokens)
 
         valid, invalid_form = self.token_validator.are_all_tokens_valid(tokens)
         if not valid:
@@ -29,6 +28,9 @@ class SiteSecurityChecker:
         new_tokens = self.form_extractor.extract_csrf_tokens(forms)
         
         if self.token_validator.are_tokens_unique(tokens, new_tokens):
+            print(tokens)
+            print()
+            print(new_tokens)
             return "Site is vulnerable: CSRF tokens are reused."
 
         # Check cookie security with Selenium

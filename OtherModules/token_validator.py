@@ -13,4 +13,6 @@ class TokenValidator:
 
     def are_tokens_unique(self, tokens, new_tokens):
         """Check if all tokens across forms are unique."""
+        # all_tokens = [token for token_list in tokens.values() for token in token_list]
+        # return len(all_tokens) == len(set(all_tokens))
         return tokens == new_tokens
